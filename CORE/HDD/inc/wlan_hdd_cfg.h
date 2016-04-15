@@ -1520,6 +1520,15 @@ typedef enum
 #define CFG_DEFAULT_RATE_INDEX_24GH_MAX           ( 7 )
 #define CFG_DEFAULT_RATE_INDEX_24GH_DEFAULT       ( 1 )
 
+/*
+ * This INI item is used to control subsystem restart(SSR) test framework
+ * Set its value to 1 to enable APPS trigerred SSR testing
+ */
+#define CFG_ENABLE_CRASH_INJECT "gEnableForceTargetAssert"
+#define CFG_ENABLE_CRASH_INJECT_MIN (0)
+#define CFG_ENABLE_CRASH_INJECT_MAX (1)
+#define CFG_ENABLE_CRASH_INJECT_DEFAULT (0)
+
 static __inline tANI_U32 defHddRateToDefCfgRate( tANI_U32 defRateIndex )
 {
     switch(defRateIndex){
@@ -2872,6 +2881,7 @@ typedef struct
    v_U8_t                      acsScanBandPreference;
    v_U16_t                     acsBandSwitchThreshold;
    v_U32_t                     enableDynamicRAStartRate;
+   v_BOOL_t                    crash_inject_enabled;
 } hdd_config_t;
 /*--------------------------------------------------------------------------- 
   Function declarations and documenation
