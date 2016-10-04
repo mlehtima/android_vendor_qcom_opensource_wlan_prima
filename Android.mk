@@ -98,16 +98,16 @@ PATCHLEVEL=$(shell grep -w "PATCHLEVEL =" $(TOP)/kernel/Makefile | sed 's/^PATCH
 include $(CLEAR_VARS)
 LOCAL_MODULE              := $(WLAN_CHIPSET)_wlan.ko
 LOCAL_MODULE_KBUILD_NAME  := wlan.ko
-LOCAL_MODULE_TAGS         := debug
-LOCAL_MODULE_DEBUG_ENABLE := true
+LOCAL_MODULE_TAGS         := 
+LOCAL_MODULE_DEBUG_ENABLE := false
 LOCAL_MODULE_PATH         := $(TARGET_OUT)/lib/modules/$(WLAN_CHIPSET)
 include $(DLKM_DIR)/AndroidKernelModule.mk
 ###########################################################
 
 #Create symbolic link
 $(shell mkdir -p $(TARGET_OUT)/lib/modules; \
-        ln -sf /system/lib/modules/$(WLAN_CHIPSET)/$(WLAN_CHIPSET)_wlan.ko \
-               $(TARGET_OUT)/lib/modules/wlan.ko)
+        ln -sf $(WLAN_CHIPSET)/$(WLAN_CHIPSET)_wlan.ko \
+               $(TARGET_OUT)/lib/modules/$(WLAN_CHIPSET)_wlan.ko)
 
 endif # DLKM check
 
