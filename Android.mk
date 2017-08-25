@@ -107,8 +107,8 @@ include $(DLKM_DIR)/AndroidKernelModule.mk
 
 #Create symbolic link
 $(shell mkdir -p $(TARGET_OUT)/lib/modules; \
-        ln -sf /system/lib/modules/$(WLAN_CHIPSET)/$(WLAN_CHIPSET)_wlan.ko \
-               $(TARGET_OUT)/lib/modules/wlan.ko)
+        ln -sf $(WLAN_CHIPSET)/$(WLAN_CHIPSET)_wlan.ko \
+               $(TARGET_OUT)/lib/modules/$(WLAN_CHIPSET)_wlan.ko)
 
 endif # DLKM check
 
